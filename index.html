@@ -6,6 +6,15 @@
   font: 20px Arial, sans-serif;
   color: #ebf9fb;
 }
+  .container {
+    display: flex;           /* выстраивает колонки в ряд */
+    gap: 20px;               /* расстояние между частями */
+  }
+  .column {
+    flex: 1;                 /* обе части одинаковой ширины */
+    border: 1px solid #ccc;  /* для наглядности */
+    padding: 10px;
+  }
 </style>
 <div class="intro">
   <h1>Страница разработки игры «Сокровище океана»</h1>
@@ -24,14 +33,21 @@
   height: 77px"
   >
 </div>
-<div style="
+<div class="container" style="
   border: 3px outset #034d47;
   background-color: #032f2b;
   font: 20px Arial, sans-serif;
   color: #e7fbfa;
   height: 777px"
   >
-  <div style="
+  <div class="column" style="
+    width: 300px;
+    border: 3px; outset #e7fbfa;
+    margin-left: 33;
+    z-index: 2">
+    <p>Что-то тут будет...</p>
+  </div>
+  <div class="column" style="
     width: 300px;
     border: 3px; outset #e7fbfa;
     margin-left: 33;
