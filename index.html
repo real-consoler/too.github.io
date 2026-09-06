@@ -18,17 +18,19 @@
     margin-left: 33;
     z-index: 2
   }
-  .carousel {
+.carousel {
   position: relative;
   max-width: 800px;
   margin: 20px auto;
+  overflow: hidden;               /* ← обрезка здесь, не на track */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .carousel-track {
   display: flex;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.4s ease; /* ← плавное перелистывание */
+  /* overflow: hidden УБРАТЬ отсюда */
 }
 
 .carousel-slide {
@@ -41,6 +43,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 10;                     /* ← поверх картинок */
   padding: 12px 16px;
   background: rgba(255,255,255,0.8);
   border: none;
