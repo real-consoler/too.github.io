@@ -135,40 +135,39 @@ nextBtn.addEventListener('click', () => {
 window.addEventListener('resize', updateCarousel);
 
 </script>
-<!-- Carousel wrapper -->
+<!-- Video Carousel wrapper -->
 <style>
-  .carousel-wrapper {
+  .v-carousel-wrapper {
     position: relative;
     max-width: 800px;
     margin: 20px auto;
   }
 
-  .carousel {
+  .v-carousel {
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
 
-  .carousel-track {
+  .v-carousel-track {
     display: flex;
     transition: transform 0.4s ease;
   }
 
-  .carousel-slide {
+  .v-carousel-slide {
     min-width: 100%;
     box-sizing: border-box;
     aspect-ratio: 16 / 9;
     position: relative;
   }
 
-  .carousel-slide iframe {
+  .v-carousel-slide iframe {
     width: 100%;
     height: 100%;
     display: block;
   }
 
-  /* Кнопки ВНЕ карусели — iframe их не перехватит */
-  .carousel-btn {
+  .v-carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -182,67 +181,67 @@ window.addEventListener('resize', updateCarousel);
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   }
 
-  .prev { left: -50px; }
-  .next { right: -50px; }
+  .v-prev { left: 10px; }
+  .v-next { right: 10px; }
 
-  /* На мобильных — кнопки внутри, но поверх */
   @media (max-width: 600px) {
-    .prev { left: 5px; }
-    .next { right: 5px; }
+    .v-prev { left: 5px; }
+    .v-next { right: 5px; }
   }
 </style>
 
-<div class="carousel-wrapper">
-  <button class="carousel-btn prev">←</button>
-  <div class="carousel">
-    <div class="carousel-track">
-      <div class="carousel-slide">
+<div class="v-carousel-wrapper">
+  <button class="v-carousel-btn v-prev">←</button>
+  <div class="v-carousel">
+    <div class="v-carousel-track">
+      <div class="v-carousel-slide">
         <iframe src="https://rutube.ru/play/embed/e60d1feb1903da78c821b77d5e4bb544/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
       </div>
-      <div class="carousel-slide">
+      <div class="v-carousel-slide">
         <iframe src="https://rutube.ru/play/embed/d8d034802158088354825990e42f4609/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
       </div>
-      <div class="carousel-slide">
+      <div class="v-carousel-slide">
         <iframe src="https://rutube.ru/play/embed/532ec944b38ce84bc69103bcbf6cdc7a/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
       </div>
     </div>
   </div>
-  <button class="carousel-btn next">→</button>
+  <button class="v-carousel-btn v-next">→</button>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
+    const vTrack = document.querySelector('.v-carousel-track');
+    const vSlides = Array.from(vTrack.children);
+    const vPrevBtn = document.querySelector('.v-prev');
+    const vNextBtn = document.querySelector('.v-next');
 
-    if (!track || !prevBtn || !nextBtn || slides.length === 0) return;
+    if (!vTrack || !vPrevBtn || !vNextBtn || vSlides.length === 0) return;
 
-    let currentIndex = 0;
+    let vCurrentIndex = 0;
 
-    function updateCarousel() {
-      const slideWidth = slides[0].getBoundingClientRect().width;
-      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    function vUpdateCarousel() {
+      const slideWidth = vSlides[0].getBoundingClientRect().width;
+      vTrack.style.transform = `translateX(-${vCurrentIndex * slideWidth}px)`;
     }
 
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
+    vPrevBtn.addEventListener('click', () => {
+      if (vCurrentIndex > 0) {
+        vCurrentIndex--;
+        vUpdateCarousel();
       }
     });
 
-    nextBtn.addEventListener('click', () => {
-      if (currentIndex < slides.length - 1) {
-        currentIndex++;
-        updateCarousel();
+    vNextBtn.addEventListener('click', () => {
+      if (vCurrentIndex < vSlides.length - 1) {
+        vCurrentIndex++;
+        vUpdateCarousel();
       }
     });
 
-    window.addEventListener('resize', updateCarousel);
-    window.addEventListener('load', updateCarousel);
-    updateCarousel();
+    window.addEventListener('resize', vUpdateCarousel);
+    window.addEventListener('load', vUpdateCarousel);
+    vUpdateCarousel();
   });
 </script>
-<!-- Carousel wrapper -->
+<!-- Video Carousel wrapper -->
+
