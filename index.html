@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>«Сокровище океана»</title>
     <style>
-		.intro {
-		  border: 2px outset #ab87b1;
-		  background-color: #5894b4;
-		  text-align: center;
-		  font: 20px Arial, sans-serif;
-		  color: #ebf9fb;
-		}
         * {
             margin: 0;
             padding: 0;
@@ -25,9 +18,18 @@
             line-height: 1.6;
         }
 
+        .intro {
+            border: 2px outset #ab87b1;
+            background-color: #5894b4;
+            text-align: center;
+            font: 20px Arial, sans-serif;
+            color: #ebf9fb;
+            padding: 20px;
+        }
+
         header {
             text-align: center;
-            padding: 100px 20px 60px;
+            padding: 60px 20px;
             background: rgba(0, 0, 0, 0.3);
         }
 
@@ -49,41 +51,32 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-		.container_half {
-			display: flex;           /* выстраивает колонки в ряд */
-			gap: 20px;               /* расстояние между частями */
-		  }
-		  .column {
-			flex: 1;                 /* обе части одинаковой ширины */
-			border: 1px solid #ccc;  /* для наглядности */
-			padding: 10px;
-			width: 300px;
-			margin-left: 33;
-			z-index: 2
-		  }
 
-        section {
-            padding: 80px 20px;
+        .container_half {
+            display: flex;
+            gap: 20px;
+            border: 3px outset #034d47;
+            background-color: #032f2b;
+            font: 20px Arial, sans-serif;
+            color: #e7fbfa;
+            padding: 20px;
+            border-radius: 10px;
         }
 
-        .about {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            margin: 40px auto;
-            max-width: 900px;
+        .column {
+            flex: 1;
+            padding: 10px;
+        }
+
+        section {
+            padding: 60px 20px;
         }
 
         h2 {
             font-size: 2.5rem;
             margin-bottom: 30px;
             text-align: center;
-        }
-
-        .about p {
-            font-size: 1.2rem;
-            text-align: center;
-            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
         .features {
@@ -111,431 +104,5 @@
             margin-bottom: 15px;
         }
 
-        .carousel {
-			  position: relative;
-			  max-width: 800px;
-			  margin: 20px auto;
-			  overflow: hidden;               /* ← обрезка здесь, не на track */
-			  border-radius: 8px;
-			  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-			}
-		.carousel-track {
-		  display: flex;
-		  transition: transform 0.4s ease; /* ← плавное перелистывание */
-		  /* overflow: hidden УБРАТЬ отсюда */
-		}
-
-		.carousel-slide {
-		  min-width: 100%;
-		  height: auto;
-		  display: block;
-		}
-
-		.carousel-btn {
-		  position: absolute;
-		  top: 50%;
-		  transform: translateY(-50%);
-		  z-index: 10;                     /* ← поверх картинок */
-		  padding: 12px 16px;
-		  background: rgba(255,255,255,0.8);
-		  border: none;
-		  cursor: pointer;
-		  border-radius: 4px;
-		}
-
-		.prev { left: 10px; }
-		.next { right: 10px; }
-
-        .download {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 60px 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: #fff;
-            color: #667eea;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin: 10px;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid #fff;
-            color: #fff;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.4);
-            margin-top: 60px;
-        }
-
-        .social-links {
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-links a:hover {
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .tagline {
-                font-size: 1.1rem;
-				color: #f7faeb
-            }
-        }
-<!-- Video Carousel wrapper with captions -->
-
-		  .v-carousel-wrapper {
-			position: relative;
-			max-width: 800px;
-			margin: 20px auto;
-		  }
-
-		  .v-carousel {
-			overflow: hidden;
-			border-radius: 8px;
-			box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-		  }
-
-		  .v-carousel-track {
-			display: flex;
-			transition: transform 0.4s ease;
-		  }
-
-		  .v-carousel-slide {
-			min-width: 100%;
-			box-sizing: border-box;
-			aspect-ratio: 16 / 9;
-			position: relative;
-		  }
-
-		  .v-carousel-slide iframe {
-			width: 100%;
-			height: 100%;
-			display: block;
-		  }
-
-		  /* Блок для общего описания под каруселью */
-		  .v-caption-area {
-			text-align: center;
-			padding: 12px 0;
-			font-family: Arial, sans-serif;
-			color: #333;
-			line-height: 1.4;
-		  }
-
-		  .v-carousel-btn {
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			z-index: 9999;
-			padding: 12px 16px;
-			background: rgba(255,255,255,0.9);
-			border: none;
-			cursor: pointer;
-			border-radius: 4px;
-			font-size: 20px;
-			box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-		  }
-
-		  .v-prev { left: 10px; }
-		  .v-next { right: 10px; }
-
-		  @media (max-width: 600px) {
-			.v-prev { left: 5px; }
-			.v-next { right: 5px; }
-		  }
-    </style>
-</head>
-<body>
-    <header class="intro">
-        <h1>Страница разработки игры «Сокровище океана»</h1>
-        <p class="tagline">Игра в разработке с 2015 года. С 11 ноября 2024 доступна в раннем доступе  на платформе VKplay</p>
-    </header>
-
-<div style="
-  border: 2px outset #ab87b1;
-  background-color: #5e2aa1">
-<img src="https://real-consoler.github.io/too.github.io/img/concept_art.jpg" alt="game promo picture, planet, hand with amuleth, two warriors ready to fight, boy face on back" style="display: block; margin: auto;
-  padding: 10px">
-</div>    
-
-
-<div class="container">
-        <div class="container_half" style="
-  border: 3px outset #034d47;
-  background-color: #032f2b;
-  font: 20px Arial, sans-serif;
-  color: #e7fbfa;
-  height: 400px"
-  >
-	  <div class="column">
-		<p>О чем игра «Сокровище океана». Часто могущество влиятельных персон держится на обмане, хитрости и интригах. В хитросплетения лжи и круговой поруки вовлекаются совершенно
-		разные персоны. Как хорошие, так и безобразные. Герой нашей игры мальчик СирАп становится свидетелем и действующим лицом в сложной игре королевы Пимпонг.</p>
-		<p>Вам предстоит провести мальчика через сложные испытания. Его испытания станут вашими. Легко не будет.</p>
-		<p>Не ожидайте что вам вот так просто раскроются карты разложенные на столе. Как это обычно бывает, части паззла не могут быть раскрыты, но только прочувствованы.</p>
-	  </div>
-	  <div class="column">
-		<p>Игра по сути это механизм, алгоритм. Что в коробке?</p>
-		<p>Игра включает в себя... Точно не вспомню уже, 18 игровых локаций. 15 или больше активных игровых персонажей, порядка 40 квестов. Разные головоломки ждут вас в разных местах. Есть лабиринты 
-		  (не локации лабиринты, упаси...). Особая гордость - в игре есть гонки в космосе, на скорости до 38 км/с. Есть испытания которые сложно описать, это просто испытание, увидите.
-		В игре теперь живет дракон, и с ним можно сразиться.</p>
-		<p>Игра все еще в процессе разработки. И не все в ней совершенно. Но в целом оно работает.</p>
-	  </div>
-  
-</div>
-
-        <section>
-            <h2>Особенности</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>🎮 Уникальный Геймплей</h3>
-                    <p>В «Сокровище океана» отсутствует насилие, которое является ключевой особенностью игр с давних времен. В игре много размышлеия и исследования. Оригинальное окружение.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🎨 Выделяющаяся Графика</h3>
-                    <p>Приверженность каким-то визуальным традициям и трендам - это не про «Сокровище». Пока в игре много заимствованных текстур, но они рисуются.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🎵 Атмосферный Саундтрек</h3>
-                    <p>Музыки в игре много оригuнальной. Но не вся. Локации с оригинальным саундтреком отмечены значком «OST». Я сам музыке не учен, а заказывать это деняг...</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Скриншлоты</h2></section>
-            <div class="carousel">
-  <button class="carousel-btn prev">←</button>
-  <div class="carousel-track">
-    <img src="https://real-consoler.github.io/too.github.io/img/1.jpg" alt="Скриншот 1" class="carousel-slide">
-    <img src="https://real-consoler.github.io/too.github.io/img/2.jpg" alt="Скриншот 2" class="carousel-slide">
-    <img src="https://real-consoler.github.io/too.github.io/img/3.jpg" alt="Скриншот 3" class="carousel-slide">
-  </div>
-  <button class="carousel-btn next">→</button>
-</div>
-        <section>
-            <h2>Видео</h2></section>
-<div class="v-carousel-wrapper">
-  <button class="v-carousel-btn v-prev">←</button>
-  <div class="v-carousel">
-    <div class="v-carousel-track">
-      <!-- Слайд 1 -->
-      <div class="v-carousel-slide">
-        <iframe src="https://rutube.ru/play/embed/e60d1feb1903da78c821b77d5e4bb544/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-        <!-- Скрытое описание внутри слайда (берём отсюда) -->
-        <span class="v-slide-caption" style="display:none">Запись стрима. После обновления.Квесты в Океании.</span>
-      </div>
-      <!-- Слайд 2 -->
-      <div class="v-carousel-slide">
-        <iframe src="https://rutube.ru/play/embed/d8d034802158088354825990e42f4609/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-        <span class="v-slide-caption" style="display:none">Обновленный проморолик для страницы игры. Авторский саундтрек</span>
-      </div>
-      <!-- Слайд 3 -->
-      <div class="v-carousel-slide">
-        <iframe src="https://rutube.ru/play/embed/532ec944b38ce84bc69103bcbf6cdc7a/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-        <span class="v-slide-caption" style="display:none">Запись ночного стрима с Романом. Запись от 6 сентября 2026. очень интересно!</span>
-      </div
-      <!-- Слайд 4 -->
-      <div class="v-carousel-slide">
-        <iframe src="https://rutube.ru/video/ad49e50e702158e4f661f12d288281eb/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-        <span class="v-slide-caption" style="display:none">Черновой вариант гонок в игре. Сейчас выглядит иначе.</span>
-      </div>
-    </div>
-  </div>
-  <button class="v-carousel-btn v-next">→</button>
-</div>
-
-<!-- Блок, куда будем выводить описание -->
-<div class="v-caption-area">
-  <span id="v-current-caption"></span>
-</div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const vTrack = document.querySelector('.v-carousel-track');
-    const vSlides = Array.from(vTrack.children);
-    const vPrevBtn = document.querySelector('.v-prev');
-    const vNextBtn = document.querySelector('.v-next');
-    const vCaptionOutput = document.getElementById('v-current-caption');
-
-    if (!vTrack || !vPrevBtn || !vNextBtn || vSlides.length === 0 || !vCaptionOutput) return;
-
-    let vCurrentIndex = 0;
-
-    function updateCaption() {
-      const currentSlide = vSlides[vCurrentIndex];
-      const captionSpan = currentSlide.querySelector('.v-slide-caption');
-      vCaptionOutput.textContent = captionSpan ? captionSpan.textContent : '';
-    }
-
-    function updateCarousel() {
-      const slideWidth = vSlides[0].getBoundingClientRect().width;
-      vTrack.style.transform = `translateX(-${vCurrentIndex * slideWidth}px)`;
-      updateCaption(); // обновляем описание при каждом сдвиге
-    }
-
-    vPrevBtn.addEventListener('click', () => {
-      if (vCurrentIndex > 0) {
-        vCurrentIndex--;
-        updateCarousel();
-      }
-    });
-
-    vNextBtn.addEventListener('click', () => {
-      if (vCurrentIndex < vSlides.length - 1) {
-        vCurrentIndex++;
-        updateCarousel();
-      }
-    });
-
-    window.addEventListener('resize', updateCarousel);
-    window.addEventListener('load', updateCarousel);
-    updateCarousel(); // первый запуск
-  });
-</script>
-<!-- Video Carousel wrapper -->       
-    </div>
-<script>
-const track = document.querySelector('.carousel-track');
-const slides = Array.from(track.children);
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-
-let currentIndex = 0;
-
-function updateCarousel() {
-  const slideWidth = slides[0].clientWidth;
-  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-}
-
-prevBtn.addEventListener('click', () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    updateCarousel();
-  }
-});
-
-nextBtn.addEventListener('click', () => {
-  if (currentIndex < slides.length - 1) {
-    currentIndex++;
-    updateCarousel();
-  }
-});
-
-// Адаптив: пересчитывать ширину при ресайзе
-window.addEventListener('resize', updateCarousel);
-<!-- Video Carousel wrapper with captions -->
-<style>
-  .v-carousel-wrapper {
-    position: relative;
-    max-width: 800px;
-    margin: 20px auto;
-  }
-
-  .v-carousel {
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  }
-
-  .v-carousel-track {
-    display: flex;
-    transition: transform 0.4s ease;
-  }
-
-  .v-carousel-slide {
-    min-width: 100%;
-    box-sizing: border-box;
-    aspect-ratio: 16 / 9;
-    position: relative;
-  }
-
-  .v-carousel-slide iframe {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
-  /* Блок для общего описания под каруселью */
-  .v-caption-area {
-    text-align: center;
-    padding: 12px 0;
-    font-family: Arial, sans-serif;
-    color: #333;
-    line-height: 1.4;
-  }
-
-  .v-carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 9999;
-    padding: 12px 16px;
-    background: rgba(255,255,255,0.9);
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  }
-
-  .v-prev { left: 10px; }
-  .v-next { right: 10px; }
-
-  @media (max-width: 600px) {
-    .v-prev { left: 5px; }
-    .v-next { right: 5px; }
-  }
-</style>
-
-
-</script>
-    <section class="download">
-        <h2>Скачать Игру</h2>
-        <p style="margin: 20px 0; font-size: 1.2rem;">Доступна на следующих платформах:</p>
-        <a href="#" class="btn">Windows</a>
-        <a href="#" class="btn btn-secondary">macOS</a>
-        <a href="#" class="btn btn-secondary">Linux</a>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Название Вашей Игры. Все права защищены.</p>
-        <div class="social-links">
-            <a href="#">Twitter</a>
-            <a href="#">Discord</a>
-            <a href="#">Steam</a>
-            <a href="#">itch.io</a>
-        </div>
-    </footer>
-</body>
-</html>
+        /* --- Стили для карусели картинок --- */
+       
