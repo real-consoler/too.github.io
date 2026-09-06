@@ -135,7 +135,7 @@ nextBtn.addEventListener('click', () => {
 window.addEventListener('resize', updateCarousel);
 
 </script>
-<!-- Video Carousel wrapper -->
+<!-- Video Carousel wrapper with captions -->
 <style>
   .v-carousel-wrapper {
     position: relative;
@@ -167,6 +167,15 @@ window.addEventListener('resize', updateCarousel);
     display: block;
   }
 
+  /* Блок для общего описания под каруселью */
+  .v-caption-area {
+    text-align: center;
+    padding: 12px 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.4;
+  }
+
   .v-carousel-btn {
     position: absolute;
     top: 50%;
@@ -194,54 +203,20 @@ window.addEventListener('resize', updateCarousel);
   <button class="v-carousel-btn v-prev">←</button>
   <div class="v-carousel">
     <div class="v-carousel-track">
+      <!-- Слайд 1 -->
       <div class="v-carousel-slide">
         <iframe src="https://rutube.ru/play/embed/e60d1feb1903da78c821b77d5e4bb544/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+        <!-- Скрытое описание внутри слайда (берём отсюда) -->
+        <span class="v-slide-caption" style="display:none">Битва с боссом: показываем механику уклонения и комбо-атаки.</span>
       </div>
+      <!-- Слайд 2 -->
       <div class="v-carousel-slide">
         <iframe src="https://rutube.ru/play/embed/d8d034802158088354825990e42f4609/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+        <span class="v-slide-caption" style="display:none">Исследование локации: скрытые проходы, секреты и точки интереса.</span>
       </div>
+      <!-- Слайд 3 -->
       <div class="v-carousel-slide">
         <iframe src="https://rutube.ru/play/embed/532ec944b38ce84bc69103bcbf6cdc7a/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-  <button class="v-carousel-btn v-next">→</button>
-</div>
+        <span class="v-slide-caption" style="display:none">Кат-сцена и сюжетный поворот: важный момент истории
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const vTrack = document.querySelector('.v-carousel-track');
-    const vSlides = Array.from(vTrack.children);
-    const vPrevBtn = document.querySelector('.v-prev');
-    const vNextBtn = document.querySelector('.v-next');
-
-    if (!vTrack || !vPrevBtn || !vNextBtn || vSlides.length === 0) return;
-
-    let vCurrentIndex = 0;
-
-    function vUpdateCarousel() {
-      const slideWidth = vSlides[0].getBoundingClientRect().width;
-      vTrack.style.transform = `translateX(-${vCurrentIndex * slideWidth}px)`;
-    }
-
-    vPrevBtn.addEventListener('click', () => {
-      if (vCurrentIndex > 0) {
-        vCurrentIndex--;
-        vUpdateCarousel();
-      }
-    });
-
-    vNextBtn.addEventListener('click', () => {
-      if (vCurrentIndex < vSlides.length - 1) {
-        vCurrentIndex++;
-        vUpdateCarousel();
-      }
-    });
-
-    window.addEventListener('resize', vUpdateCarousel);
-    window.addEventListener('load', vUpdateCarousel);
-    vUpdateCarousel();
-  });
-</script>
-<!-- Video Carousel wrapper -->
 
