@@ -119,6 +119,32 @@
 			  border-radius: 8px;
 			  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 			}
+		.carousel-track {
+		  display: flex;
+		  transition: transform 0.4s ease; /* ← плавное перелистывание */
+		  /* overflow: hidden УБРАТЬ отсюда */
+		}
+
+		.carousel-slide {
+		  min-width: 100%;
+		  height: auto;
+		  display: block;
+		}
+
+		.carousel-btn {
+		  position: absolute;
+		  top: 50%;
+		  transform: translateY(-50%);
+		  z-index: 10;                     /* ← поверх картинок */
+		  padding: 12px 16px;
+		  background: rgba(255,255,255,0.8);
+		  border: none;
+		  cursor: pointer;
+		  border-radius: 4px;
+		}
+
+		.prev { left: 10px; }
+		.next { right: 10px; }
 
         .download {
             text-align: center;
@@ -246,7 +272,7 @@
         </section>
 
         <section>
-            <h2>Скриншлоты</h2>
+            <h2>Скриншлоты</h2></section>
             <div class="carousel">
   <button class="carousel-btn prev">←</button>
   <div class="carousel-track">
@@ -256,7 +282,7 @@
   </div>
   <button class="carousel-btn next">→</button>
 </div>
-        </section>
+        
     </div>
 <script>
 const track = document.querySelector('.carousel-track');
