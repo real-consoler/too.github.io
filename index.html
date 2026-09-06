@@ -313,7 +313,149 @@ nextBtn.addEventListener('click', () => {
 
 // Адаптив: пересчитывать ширину при ресайзе
 window.addEventListener('resize', updateCarousel);
+<!-- Video Carousel wrapper with captions -->
+<style>
+  .v-carousel-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto;
+  }
 
+  .v-carousel {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .v-carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .v-carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    aspect-ratio: 16 / 9;
+    position: relative;
+  }
+
+  .v-carousel-slide iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Блок для общего описания под каруселью */
+  .v-caption-area {
+    text-align: center;
+    padding: 12px 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  .v-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.9);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .v-prev { left: 10px; }
+  .v-next { right: 10px; }
+
+  @media (max-width: 600px) {
+    .v-prev { left: 5px; }
+    .v-next { right: 5px; }
+  }
+</style>
+
+<div class="v-carousel-wrapper">
+  <button class="v-carousel-btn v-prev">←</button>
+  <div class="v-carousel">
+    <div class="v-carousel-track">
+      <!-- Слайд 1 -->
+      <div class="v-carousel-slide">
+        <iframe src="https://rutube.ru/play/embed/e60d1feb1903da78c821b77d5e4bb544/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+        <!-- Скрытое описание внутри слайда (берём отсюда) -->
+        <span class="v-slide-caption" style="display:none">Запись стрима. После обновления.Квесты в Океании.</span>
+      </div>
+      <!-- Слайд 2 -->
+      <div class="v-carousel-slide">
+        <iframe src="https://rutube.ru/play/embed/d8d034802158088354825990e42f4609/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+        <span class="v-slide-caption" style="display:none">Обновленный проморолик для страницы игры. Авторский саундтрек</span>
+      </div>
+      <!-- Слайд 3 -->
+      <div class="v-carousel-slide">
+        <iframe src="https://rutube.ru/play/embed/532ec944b38ce84bc69103bcbf6cdc7a/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+        <span class="v-slide-caption" style="display:none">Запись ночного стрима с Романом. Запись от 6 сентября 2026. очень интересно!</span>
+      </div
+      <!-- Слайд 4 -->
+      <div class="v-carousel-slide">
+        <iframe src="https://rutube.ru/video/ad49e50e702158e4f661f12d288281eb/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+        <span class="v-slide-caption" style="display:none">Черновой вариант гонок в игре. Сейчас выглядит иначе.</span>
+      </div>
+    </div>
+  </div>
+  <button class="v-carousel-btn v-next">→</button>
+</div>
+
+<!-- Блок, куда будем выводить описание -->
+<div class="v-caption-area">
+  <span id="v-current-caption"></span>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const vTrack = document.querySelector('.v-carousel-track');
+    const vSlides = Array.from(vTrack.children);
+    const vPrevBtn = document.querySelector('.v-prev');
+    const vNextBtn = document.querySelector('.v-next');
+    const vCaptionOutput = document.getElementById('v-current-caption');
+
+    if (!vTrack || !vPrevBtn || !vNextBtn || vSlides.length === 0 || !vCaptionOutput) return;
+
+    let vCurrentIndex = 0;
+
+    function updateCaption() {
+      const currentSlide = vSlides[vCurrentIndex];
+      const captionSpan = currentSlide.querySelector('.v-slide-caption');
+      vCaptionOutput.textContent = captionSpan ? captionSpan.textContent : '';
+    }
+
+    function updateCarousel() {
+      const slideWidth = vSlides[0].getBoundingClientRect().width;
+      vTrack.style.transform = `translateX(-${vCurrentIndex * slideWidth}px)`;
+      updateCaption(); // обновляем описание при каждом сдвиге
+    }
+
+    vPrevBtn.addEventListener('click', () => {
+      if (vCurrentIndex > 0) {
+        vCurrentIndex--;
+        updateCarousel();
+      }
+    });
+
+    vNextBtn.addEventListener('click', () => {
+      if (vCurrentIndex < vSlides.length - 1) {
+        vCurrentIndex++;
+        updateCarousel();
+      }
+    });
+
+    window.addEventListener('resize', updateCarousel);
+    window.addEventListener('load', updateCarousel);
+    updateCarousel(); // первый запуск
+  });
+</script>
+<!-- Video Carousel wrapper -->
 </script>
     <section class="download">
         <h2>Скачать Игру</h2>
