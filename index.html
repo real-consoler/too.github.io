@@ -164,9 +164,16 @@ window.addEventListener('resize', updateCarousel);
 
 .carousel-slide {
   min-width: 100%;
-  height: auto;
-  display: block;
+  box-sizing: border-box;
+}
+
+.carousel-slide video {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  background: #000;
+  aspect-ratio: 16 / 9;
 }
 
 .carousel-btn {
@@ -185,16 +192,24 @@ window.addEventListener('resize', updateCarousel);
 .next { right: 10px; }
 
 
+
 </style>
 <div class="carousel">
   <button class="carousel-btn prev">←</button>
   <div class="carousel-track">
-    <video class="carousel-slide" src="https://rutube.ru/video/532ec944b38ce84bc69103bcbf6cdc7a/" muted controls playsinline></video>
-    <video class="carousel-slide" src="https://rutube.ru/video/d8d034802158088354825990e42f4609/" muted controls playsinline></video>
-    <video class="carousel-slide" src="https://rutube.ru/video/e60d1feb1903da78c821b77d5e4bb544/" muted controls playsinline></video>
+    <div class="carousel-slide">
+      <video src="video1.mp4" muted controls playsinline></video>
+    </div>
+    <div class="carousel-slide">
+      <video src="video2.mp4" muted controls playsinline></video>
+    </div>
+    <div class="carousel-slide">
+      <video src="video3.mp4" muted controls playsinline></video>
+    </div>
   </div>
   <button class="carousel-btn next">→</button>
 </div>
+
 
 
 <script>
@@ -209,16 +224,16 @@ window.addEventListener('resize', updateCarousel);
   let currentIndex = 0;
 
   function updateCarousel() {
-    const slideWidth = slides[0].clientWidth;
+    const slideWidth = slides[0].getBoundingClientRect().width;
     track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
   }
 
-  // Пауза для всех видео, кроме текущего
   function pauseOtherVideos() {
     slides.forEach((slide, i) => {
-      if (i !== currentIndex) {
-        slide.pause();
-        slide.currentTime = 0;
+      const video = slide.querySelector('video');
+      if (video && i !== currentIndex) {
+        video.pause();
+        video.currentTime = 0;
       }
     });
   }
@@ -240,6 +255,7 @@ window.addEventListener('resize', updateCarousel);
   });
 
   window.addEventListener('resize', updateCarousel);
+  window.addEventListener('load', updateCarousel);
   updateCarousel();
 });
 
