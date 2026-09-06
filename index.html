@@ -137,10 +137,13 @@ window.addEventListener('resize', updateCarousel);
 </script>
 <!-- Carousel wrapper -->
 <style>
-  .carousel {
+  .carousel-wrapper {
     position: relative;
     max-width: 800px;
     margin: 20px auto;
+  }
+
+  .carousel {
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -154,7 +157,7 @@ window.addEventListener('resize', updateCarousel);
   .carousel-slide {
     min-width: 100%;
     box-sizing: border-box;
-    aspect-ratio: 16 / 9; /* Пропорции 16:9 */
+    aspect-ratio: 16 / 9;
     position: relative;
   }
 
@@ -164,34 +167,44 @@ window.addEventListener('resize', updateCarousel);
     display: block;
   }
 
+  /* Кнопки ВНЕ карусели — iframe их не перехватит */
   .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10;
+    z-index: 9999;
     padding: 12px 16px;
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.9);
     border: none;
     cursor: pointer;
     border-radius: 4px;
+    font-size: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   }
 
-  .prev { left: 10px; }
-  .next { right: 10px; }
+  .prev { left: -50px; }
+  .next { right: -50px; }
+
+  /* На мобильных — кнопки внутри, но поверх */
+  @media (max-width: 600px) {
+    .prev { left: 5px; }
+    .next { right: 5px; }
+  }
 </style>
 
-<div class="carousel">
+<div class="carousel-wrapper">
   <button class="carousel-btn prev">←</button>
-  <div class="carousel-track">
-    <div class="carousel-slide">
-      <!-- Вставь сюда embed-ссылку Rutube -->
-      <iframe src="https://rutube.ru/play/embed/e60d1feb1903da78c821b77d5e4bb544/" width="100%" height="100%" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-    </div>
-    <div class="carousel-slide">
-      <iframe src="https://rutube.ru/play/embed/d8d034802158088354825990e42f4609/" width="100%" height="100%" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-    </div>
-    <div class="carousel-slide">
-      <iframe src="https://rutube.ru/play/embed/532ec944b38ce84bc69103bcbf6cdc7a/" width="100%" height="100%" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+  <div class="carousel">
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <iframe src="https://rutube.ru/play/embed/e60d1feb1903da78c821b77d5e4bb544/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+      </div>
+      <div class="carousel-slide">
+        <iframe src="https://rutube.ru/play/embed/d8d034802158088354825990e42f4609/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+      </div>
+      <div class="carousel-slide">
+        <iframe src="https://rutube.ru/play/embed/532ec944b38ce84bc69103bcbf6cdc7a/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
   <button class="carousel-btn next">→</button>
@@ -209,7 +222,6 @@ window.addEventListener('resize', updateCarousel);
     let currentIndex = 0;
 
     function updateCarousel() {
-      // Используем getBoundingClientRect для точности
       const slideWidth = slides[0].getBoundingClientRect().width;
       track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     }
