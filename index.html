@@ -217,6 +217,61 @@ window.addEventListener('resize', updateCarousel);
       <!-- Слайд 3 -->
       <div class="v-carousel-slide">
         <iframe src="https://rutube.ru/play/embed/532ec944b38ce84bc69103bcbf6cdc7a/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-        <span class="v-slide-caption" style="display:none">Кат-сцена и сюжетный поворот: важный момент истории
+        <span class="v-slide-caption" style="display:none">Кат-сцена и сюжетный поворот: важный момент истории игры.</span>
+      </div>
+    </div>
+  </div>
+  <button class="v-carousel-btn v-next">→</button>
+</div>
+
+<!-- Блок, куда будем выводить описание -->
+<div class="v-caption-area">
+  <span id="v-current-caption"></span>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const vTrack = document.querySelector('.v-carousel-track');
+    const vSlides = Array.from(vTrack.children);
+    const vPrevBtn = document.querySelector('.v-prev');
+    const vNextBtn = document.querySelector('.v-next');
+    const vCaptionOutput = document.getElementById('v-current-caption');
+
+    if (!vTrack || !vPrevBtn || !vNextBtn || vSlides.length === 0 || !vCaptionOutput) return;
+
+    let vCurrentIndex = 0;
+
+    function updateCaption() {
+      const currentSlide = vSlides[vCurrentIndex];
+      const captionSpan = currentSlide.querySelector('.v-slide-caption');
+      vCaptionOutput.textContent = captionSpan ? captionSpan.textContent : '';
+    }
+
+    function updateCarousel() {
+      const slideWidth = vSlides[0].getBoundingClientRect().width;
+      vTrack.style.transform = `translateX(-${vCurrentIndex * slideWidth}px)`;
+      updateCaption(); // обновляем описание при каждом сдвиге
+    }
+
+    vPrevBtn.addEventListener('click', () => {
+      if (vCurrentIndex > 0) {
+        vCurrentIndex--;
+        updateCarousel();
+      }
+    });
+
+    vNextBtn.addEventListener('click', () => {
+      if (vCurrentIndex < vSlides.length - 1) {
+        vCurrentIndex++;
+        updateCarousel();
+      }
+    });
+
+    window.addEventListener('resize', updateCarousel);
+    window.addEventListener('load', updateCarousel);
+    updateCarousel(); // первый запуск
+  });
+</script>
+<!-- Video Carousel wrapper -->
 
 
