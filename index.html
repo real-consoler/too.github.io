@@ -1,282 +1,241 @@
-<style>
-.intro {
-  border: 2px outset #ab87b1;
-  background-color: #5894b4;
-  text-align: center;
-  font: 20px Arial, sans-serif;
-  color: #ebf9fb;
-}
-  .container {
-    display: flex;           /* выстраивает колонки в ряд */
-    gap: 20px;               /* расстояние между частями */
-  }
-  .column {
-    flex: 1;                 /* обе части одинаковой ширины */
-    border: 1px solid #ccc;  /* для наглядности */
-    padding: 10px;
-    width: 300px;
-    margin-left: 33;
-    z-index: 2
-  }
-.carousel {
-  position: relative;
-  max-width: 800px;
-  margin: 20px auto;
-  overflow: hidden;               /* ← обрезка здесь, не на track */
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>«Сокровище океана»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.carousel-track {
-  display: flex;
-  transition: transform 0.4s ease; /* ← плавное перелистывание */
-  /* overflow: hidden УБРАТЬ отсюда */
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
 
-.carousel-slide {
-  min-width: 100%;
-  height: auto;
-  display: block;
-}
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+            background: rgba(0, 0, 0, 0.3);
+        }
 
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;                     /* ← поверх картинок */
-  padding: 12px 16px;
-  background: rgba(255,255,255,0.8);
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-}
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-</style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-<div class="intro">
-  <h1>Страница разработки игры «Сокровище океана»</h1>
-  <p style="color: #f7faeb">Игра в разработке с 2015 года. С 11 ноября 2024 доступна в раннем доступе  на платформе VKplay</p>
-</div>
-<div style="
-  border: 2px outset #ab87b1;
-  background-color: #5e2aa1">
-<img src="https://real-consoler.github.io/too.github.io/img/concept_art.jpg" alt="game promo picture, planet, hand with amuleth, two warriors ready to fight, boy face on back" style="display: block; margin: auto;
-  padding: 10px">
-</div>
-<div style=
-  "background-color: #f8e3b3;
-  font: 20px Arial, sans-serif;
-  color: #36055b;
-  height: 77px"
-  >
-</div>
-<div class="container" style="
-  border: 3px outset #034d47;
-  background-color: #032f2b;
-  font: 20px Arial, sans-serif;
-  color: #e7fbfa;
-  height: 777px"
-  >
-  <div class="column">
-    <p>О чем игра «Сокровище океана». Часто могущество влиятельных персон держится на обмане, хитрости и интригах. В хитросплетения лжи и круговой поруки вовлекаются совершенно
-    разные персоны. Как хорошие, так и безобразные. Герой нашей игры мальчик СирАп становится свидетелем и действующим лицом в сложной игре королевы Пимпонг.</p>
-    <p>Вам предстоит провести мальчика через сложные испытания. Его испытания станут вашими. Легко не будет.</p>
-    <p>Не ожидайте что вам вот так просто раскроются карты разложенные на столе. Как это обычно бывает, части паззла не могут быть раскрыты, но только прочувствованы.</p>
-  </div>
-  <div class="column">
-    <p>Игра по сути это механизм, алгоритм. Что в коробке?</p>
-    <p>Игра включает в себя... Точно не вспомню уже, 18 игровых локаций. 15 или больше активных игровых персонажей, порядка 40 квестов. Разные головоломки ждут вас в разных местах. Есть лабиринты 
-      (не локации лабиринты, упаси...). Особая гордость - в игре есть гонки в космосе, на скорости до 38 км/с. Есть испытания которые сложно описать, это просто испытание, увидите.
-    В игре теперь живет дракон, и с ним можно сразиться.</p>
-    <p>Игра все еще в процессе разработки. И не все в ней совершенно. Но в целом оно работает.</p>
-  </div>
-  
-</div>
-<div class="carousel">
-  <button class="carousel-btn prev">←</button>
-  <div class="carousel-track">
-    <img src="https://real-consoler.github.io/too.github.io/img/1.jpg" alt="Скриншот 1" class="carousel-slide">
-    <img src="https://real-consoler.github.io/too.github.io/img/2.jpg" alt="Скриншот 2" class="carousel-slide">
-    <img src="https://real-consoler.github.io/too.github.io/img/3.jpg" alt="Скриншот 3" class="carousel-slide">
-  </div>
-  <button class="carousel-btn next">→</button>
-</div>
-<script>
-const track = document.querySelector('.carousel-track');
-const slides = Array.from(track.children);
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
+        section {
+            padding: 80px 20px;
+        }
 
-let currentIndex = 0;
+        .about {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin: 40px auto;
+            max-width: 900px;
+        }
 
-function updateCarousel() {
-  const slideWidth = slides[0].clientWidth;
-  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-}
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
 
-prevBtn.addEventListener('click', () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    updateCarousel();
-  }
-});
+        .about p {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-nextBtn.addEventListener('click', () => {
-  if (currentIndex < slides.length - 1) {
-    currentIndex++;
-    updateCarousel();
-  }
-});
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
 
-// Адаптив: пересчитывать ширину при ресайзе
-window.addEventListener('resize', updateCarousel);
+        .feature-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
 
-</script>
-<!-- Video Carousel wrapper with captions -->
-<style>
-  .v-carousel-wrapper {
-    position: relative;
-    max-width: 800px;
-    margin: 20px auto;
-  }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
 
-  .v-carousel {
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
 
-  .v-carousel-track {
-    display: flex;
-    transition: transform 0.4s ease;
-  }
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
 
-  .v-carousel-slide {
-    min-width: 100%;
-    box-sizing: border-box;
-    aspect-ratio: 16 / 9;
-    position: relative;
-  }
+        .screenshot {
+            width: 100%;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
 
-  .v-carousel-slide iframe {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
+        .download {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 60px 20px;
+        }
 
-  /* Блок для общего описания под каруселью */
-  .v-caption-area {
-    text-align: center;
-    padding: 12px 0;
-    font-family: Arial, sans-serif;
-    color: #333;
-    line-height: 1.4;
-  }
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #fff;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
 
-  .v-carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 9999;
-    padding: 12px 16px;
-    background: rgba(255,255,255,0.9);
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  }
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
 
-  .v-prev { left: 10px; }
-  .v-next { right: 10px; }
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
 
-  @media (max-width: 600px) {
-    .v-prev { left: 5px; }
-    .v-next { right: 5px; }
-  }
-</style>
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            margin-top: 60px;
+        }
 
-<div class="v-carousel-wrapper">
-  <button class="v-carousel-btn v-prev">←</button>
-  <div class="v-carousel">
-    <div class="v-carousel-track">
-      <!-- Слайд 1 -->
-      <div class="v-carousel-slide">
-        <iframe src="https://rutube.ru/play/embed/e60d1feb1903da78c821b77d5e4bb544/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-        <!-- Скрытое описание внутри слайда (берём отсюда) -->
-        <span class="v-slide-caption" style="display:none">Запись стрима. После обновления.Квесты в Океании.</span>
-      </div>
-      <!-- Слайд 2 -->
-      <div class="v-carousel-slide">
-        <iframe src="https://rutube.ru/play/embed/d8d034802158088354825990e42f4609/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-        <span class="v-slide-caption" style="display:none">Обновленный проморолик для страницы игры. Авторский саундтрек</span>
-      </div>
-      <!-- Слайд 3 -->
-      <div class="v-carousel-slide">
-        <iframe src="https://rutube.ru/play/embed/532ec944b38ce84bc69103bcbf6cdc7a/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-        <span class="v-slide-caption" style="display:none">Запись ночного стрима с Романом. Запись от 6 сентября 2026. очень интересно!</span>
-      </div
-      <!-- Слайд 4 -->
-      <div class="v-carousel-slide">
-        <iframe src="https://rutube.ru/video/ad49e50e702158e4f661f12d288281eb/" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
-        <span class="v-slide-caption" style="display:none">Черновой вариант гонок в игре. Сейчас выглядит иначе.</span>
-      </div>
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>«Сокровище океана»</h1>
+        <p class="tagline">Краткое описание вашей инди-игры в одном предложении</p>
+    </header>
+
+    <div class="container">
+        <section class="about">
+            <h2>Об Игре</h2>
+            <p>Здесь расскажите о вашей игре. Что делает её уникальной? Какой жанр? Какая история или механика?</p>
+            <p>Добавьте больше деталей о геймплее, сеттинге и особенностях проекта.</p>
+        </section>
+
+        <section>
+            <h2>Особенности</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🎮 Уникальный Геймплей</h3>
+                    <p>Опишите первую ключевую особенность вашей игры</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎨 Стильная Графика</h3>
+                    <p>Опишите визуальный стиль и атмосферу</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎵 Атмосферный Саундтрек</h3>
+                    <p>Расскажите о музыкальном сопровождении</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Скриншоты</h2>
+            <div class="screenshots">
+                <div class="screenshot">Скриншот 1</div>
+                <div class="screenshot">Скриншот 2</div>
+                <div class="screenshot">Скриншот 3</div>
+            </div>
+        </section>
     </div>
-  </div>
-  <button class="v-carousel-btn v-next">→</button>
-</div>
 
-<!-- Блок, куда будем выводить описание -->
-<div class="v-caption-area">
-  <span id="v-current-caption"></span>
-</div>
+    <section class="download">
+        <h2>Скачать Игру</h2>
+        <p style="margin: 20px 0; font-size: 1.2rem;">Доступна на следующих платформах:</p>
+        <a href="#" class="btn">Windows</a>
+        <a href="#" class="btn btn-secondary">macOS</a>
+        <a href="#" class="btn btn-secondary">Linux</a>
+    </section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const vTrack = document.querySelector('.v-carousel-track');
-    const vSlides = Array.from(vTrack.children);
-    const vPrevBtn = document.querySelector('.v-prev');
-    const vNextBtn = document.querySelector('.v-next');
-    const vCaptionOutput = document.getElementById('v-current-caption');
-
-    if (!vTrack || !vPrevBtn || !vNextBtn || vSlides.length === 0 || !vCaptionOutput) return;
-
-    let vCurrentIndex = 0;
-
-    function updateCaption() {
-      const currentSlide = vSlides[vCurrentIndex];
-      const captionSpan = currentSlide.querySelector('.v-slide-caption');
-      vCaptionOutput.textContent = captionSpan ? captionSpan.textContent : '';
-    }
-
-    function updateCarousel() {
-      const slideWidth = vSlides[0].getBoundingClientRect().width;
-      vTrack.style.transform = `translateX(-${vCurrentIndex * slideWidth}px)`;
-      updateCaption(); // обновляем описание при каждом сдвиге
-    }
-
-    vPrevBtn.addEventListener('click', () => {
-      if (vCurrentIndex > 0) {
-        vCurrentIndex--;
-        updateCarousel();
-      }
-    });
-
-    vNextBtn.addEventListener('click', () => {
-      if (vCurrentIndex < vSlides.length - 1) {
-        vCurrentIndex++;
-        updateCarousel();
-      }
-    });
-
-    window.addEventListener('resize', updateCarousel);
-    window.addEventListener('load', updateCarousel);
-    updateCarousel(); // первый запуск
-  });
-</script>
-<!-- Video Carousel wrapper -->
-
-
+    <footer>
+        <p>&copy; 2026 Название Вашей Игры. Все права защищены.</p>
+        <div class="social-links">
+            <a href="#">Twitter</a>
+            <a href="#">Discord</a>
+            <a href="#">Steam</a>
+            <a href="#">itch.io</a>
+        </div>
+    </footer>
+</body>
+</html>
