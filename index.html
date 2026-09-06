@@ -18,7 +18,71 @@
     margin-left: 33;
     z-index: 2
   }
+  .carousel {
+  position: relative;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.carousel-track {
+  display: flex;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
 </style>
+<script>
+const track = document.querySelector('.carousel-track');
+const slides = Array.from(track.children);
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+
+let currentIndex = 0;
+
+function updateCarousel() {
+  const slideWidth = slides[0].clientWidth;
+  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+}
+
+prevBtn.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateCarousel();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (currentIndex < slides.length - 1) {
+    currentIndex++;
+    updateCarousel();
+  }
+});
+
+// Адаптив: пересчитывать ширину при ресайзе
+window.addEventListener('resize', updateCarousel);
+
+</script>
 <div class="intro">
   <h1>Страница разработки игры «Сокровище океана»</h1>
   <p style="color: #f7faeb">Игра в разработке с 2015 года. С 11 ноября 2024 доступна в раннем доступе  на платформе VKplay</p>
@@ -57,4 +121,13 @@
     <p>Игра все еще в процессе разработки. И не все в ней совершенно. Но в целом оно работает.</p>
   </div>
   
+</div>
+<div class="carousel">
+  <button class="carousel-btn prev">←</button>
+  <div class="carousel-track">
+    <img src="https://real-consoler.github.io/too.github.io/img/1.jpg" alt="Скриншот 1" class="carousel-slide">
+    <img src="https://real-consoler.github.io/too.github.io/img/2.jpg" alt="Скриншот 2" class="carousel-slide">
+    <img src="https://real-consoler.github.io/too.github.io/img/3.jpg" alt="Скриншот 3" class="carousel-slide">
+  </div>
+  <button class="carousel-btn next">→</button>
 </div>
