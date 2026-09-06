@@ -425,36 +425,6 @@
 </script>
 <!-- Video Carousel wrapper -->       
     </div>
-<script>
-const track = document.querySelector('.carousel-track');
-const slides = Array.from(track.children);
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-
-let currentIndex = 0;
-
-function updateCarousel() {
-  const slideWidth = slides[0].clientWidth;
-  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-}
-
-prevBtn.addEventListener('click', () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    updateCarousel();
-  }
-});
-
-nextBtn.addEventListener('click', () => {
-  if (currentIndex < slides.length - 1) {
-    currentIndex++;
-    updateCarousel();
-  }
-});
-
-// Адаптив: пересчитывать ширину при ресайзе
-window.addEventListener('resize', updateCarousel);
-<!-- Video Carousel wrapper with captions -->
 <style>
   .v-carousel-wrapper {
     position: relative;
@@ -517,6 +487,37 @@ window.addEventListener('resize', updateCarousel);
     .v-next { right: 5px; }
   }
 </style>
+<script>
+const track = document.querySelector('.carousel-track');
+const slides = Array.from(track.children);
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+
+let currentIndex = 0;
+
+function updateCarousel() {
+  const slideWidth = slides[0].clientWidth;
+  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+}
+
+prevBtn.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateCarousel();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (currentIndex < slides.length - 1) {
+    currentIndex++;
+    updateCarousel();
+  }
+});
+
+// Адаптив: пересчитывать ширину при ресайзе
+window.addEventListener('resize', updateCarousel);
+<!-- Video Carousel wrapper with captions -->
+
 
 
 </script>
