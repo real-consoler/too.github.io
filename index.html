@@ -258,7 +258,37 @@
 </div>
         </section>
     </div>
+<script>
+const track = document.querySelector('.carousel-track');
+const slides = Array.from(track.children);
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
 
+let currentIndex = 0;
+
+function updateCarousel() {
+  const slideWidth = slides[0].clientWidth;
+  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+}
+
+prevBtn.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateCarousel();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (currentIndex < slides.length - 1) {
+    currentIndex++;
+    updateCarousel();
+  }
+});
+
+// Адаптив: пересчитывать ширину при ресайзе
+window.addEventListener('resize', updateCarousel);
+
+</script>
     <section class="download">
         <h2>Скачать Игру</h2>
         <p style="margin: 20px 0; font-size: 1.2rem;">Доступна на следующих платформах:</p>
