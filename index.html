@@ -52,37 +52,7 @@
 .next { right: 10px; }
 
 </style>
-<script>
-const track = document.querySelector('.carousel-track');
-const slides = Array.from(track.children);
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
 
-let currentIndex = 0;
-
-function updateCarousel() {
-  const slideWidth = slides[0].clientWidth;
-  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-}
-
-prevBtn.addEventListener('click', () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    updateCarousel();
-  }
-});
-
-nextBtn.addEventListener('click', () => {
-  if (currentIndex < slides.length - 1) {
-    currentIndex++;
-    updateCarousel();
-  }
-});
-
-// Адаптив: пересчитывать ширину при ресайзе
-window.addEventListener('resize', updateCarousel);
-
-</script>
 <div class="intro">
   <h1>Страница разработки игры «Сокровище океана»</h1>
   <p style="color: #f7faeb">Игра в разработке с 2015 года. С 11 ноября 2024 доступна в раннем доступе  на платформе VKplay</p>
@@ -131,3 +101,34 @@ window.addEventListener('resize', updateCarousel);
   </div>
   <button class="carousel-btn next">→</button>
 </div>
+<script>
+const track = document.querySelector('.carousel-track');
+const slides = Array.from(track.children);
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+
+let currentIndex = 0;
+
+function updateCarousel() {
+  const slideWidth = slides[0].clientWidth;
+  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+}
+
+prevBtn.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateCarousel();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (currentIndex < slides.length - 1) {
+    currentIndex++;
+    updateCarousel();
+  }
+});
+
+// Адаптив: пересчитывать ширину при ресайзе
+window.addEventListener('resize', updateCarousel);
+
+</script>
